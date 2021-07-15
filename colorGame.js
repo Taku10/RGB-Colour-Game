@@ -1,14 +1,14 @@
-var numSquares = 6;
+const numSquares = 6;
 
-var colors = generateRandomColors(6);
-var squares = document.querySelectorAll(".square");         // grabbed all the div's in html
-var pickedColor = pickColor();
-var colorDisplay = document.getElementById("colorDisplay"); //grabbed the rgb display
-var messageDisplay = document.querySelector("#message");    // message in a span
-var h1 = document.querySelector("h1");
-var resetButton = document.querySelector("#reset");
-var easyBtn = document.querySelector("#easyBtn");
-var hardBtn = document.querySelector("#hardBtn");
+const colors = generateRandomColors(6);
+const squares = document.querySelectorAll(".square");         // grabbed all the div's in html
+const pickedColor = pickColor();
+const colorDisplay = document.getElementById("colorDisplay"); //grabbed the rgb display
+const messageDisplay = document.querySelector("#message");    // message in a span
+const h1 = document.querySelector("h1");
+const resetButton = document.querySelector("#reset");
+const easyBtn = document.querySelector("#easyBtn");
+const hardBtn = document.querySelector("#hardBtn");
 
 
 easyBtn.addEventListener("click", function (){
@@ -19,7 +19,7 @@ easyBtn.addEventListener("click", function (){
 	pickedColor = pickColor();
 	colorDisplay.textContent = pickedColor;
 
-	for(var i = 0; i < squares.length;i++){
+	for(let i = 0; i < squares.length;i++){
 		if(colors[i]){
 			squares[i].style.backgroundColor = colors[i];
 		}else{
@@ -36,7 +36,7 @@ hardBtn.addEventListener("click", function (){
 	colors = generateRandomColors(numSquares);
 	colorDisplay.textContent = pickedColor;
 
-	for(var i = 0; i < squares.length;i++){
+	for(let i = 0; i < squares.length;i++){
 		squares[i].style.backgroundColor = colors[i];
 		squares[i].style.display ="block";
 
@@ -56,7 +56,7 @@ resetButton.addEventListener("click", function(){
 	this.textContent = "New Colors"
 	messageDisplay.textContent = " ";
 
-	for(var i = 0; i < squares.length; i++){
+	for(let i = 0; i < squares.length; i++){
 		squares[i].style.backgroundColor = colors[i];
 
 	}
@@ -67,11 +67,11 @@ resetButton.addEventListener("click", function(){
 
 colorDisplay.textContent = pickedColor; //The RGB display on top that changes
 
-for(var i = 0; i < squares.length;i++){
+for(let i = 0; i < squares.length;i++){
 	squares[i].style.backgroundColor = colors[i];          //gave every square a color
 
 	squares[i].addEventListener("click", function(){
-		var clickedColor = this.style.backgroundColor;
+		let clickedColor = this.style.backgroundColor;
 		
 		if(clickedColor === pickedColor){
 			messageDisplay.textContent = "Correct!!";
@@ -86,23 +86,23 @@ for(var i = 0; i < squares.length;i++){
 }
 
 function changeColors(color){
-	for(var i = 0; i < squares.length;i++){
+	for(let i = 0; i < squares.length;i++){
 		squares[i].style.backgroundColor = color;
 	}
 
 }
 //using random number to access array
 function pickColor(){
-	var random = Math.floor(Math.random() * colors.length);
+	let random = Math.floor(Math.random() * colors.length);
 	return colors[random];	
 
 }
 
 //generate random colors
 function generateRandomColors (num){
-	var arr = [];
+	let arr = [];
 
-	for(var i = 0; i < num; i++){
+	for(let i = 0; i < num; i++){
 		arr.push(randomColor());
 
 	}
@@ -114,9 +114,9 @@ function generateRandomColors (num){
 
 //function to generate random RGB numbers
 function randomColor(){
-	var r = Math.floor(Math.random() * 256);
-	var g = Math.floor(Math.random() * 256);
-	var b = Math.floor(Math.random() * 256);
+	let r = Math.floor(Math.random() * 256);
+	let g = Math.floor(Math.random() * 256);
+	let b = Math.floor(Math.random() * 256);
 
 	return "rgb(" + r + ", " + g + ", " + b + ")";
 
